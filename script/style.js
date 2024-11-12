@@ -26,7 +26,7 @@ removeButton.addEventListener("click", () => {
 
 
 
-let i = sessionStorage.getItem('count') ? parseInt(sessionStorage.getItem('count')) : 0
+let i = sessionStorage.getItem('counter') ? parseInt(sessionStorage.getItem('counter')) : 0
 let intervalId = null
 document.getElementById("counter").innerText = "Tempo trascorso: " + i + " secondi";
 
@@ -35,7 +35,7 @@ function startCounter() {
     if(!intervalId){
         intervalId = setInterval(() => {
             i++
-            sessionStorage.setItem("count", i);
+            sessionStorage.setItem("counter", i);
             document.getElementById("counter").innerText = "Tempo trascorso: " + i + " secondi"
         }, 1000)
         
@@ -54,7 +54,7 @@ function pauseCounter(){
 function resetCounter(){
     pauseCounter()
     i = 0
-    sessionStorage.setItem("count", i);
+    sessionStorage.setItem("counter", i);
     document.getElementById("counter").innerText = "Tempo trascorso: " + i + " secondi";
 
 }
