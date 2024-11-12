@@ -26,20 +26,21 @@ removeButton.addEventListener("click", () => {
 
 
 
-const count = parseInt(sessionStorage.getItem("counter")) || 0
-const intervalId = null
-document.getElementById("counter").textContent = "Tempo trascorso: " + count + " secondi";
+let i = sessionStorage.getItem('count') ? parseInt(sessionStorage.getItem('count')) : 0
+let intervalId = null
+document.getElementById("counter").innerText = "Tempo trascorso: " + i + " secondi";
 
 
 function startCounter() {
     if(!intervalId){
         intervalId = setInterval(() => {
-            count++;
-            sessionStorage.setItem("counter", count);
-            document.getElementById("counter").textContent = "Tempo trascorso: " + count + " secondi"
+            i++
+            sessionStorage.setItem("count", i);
+            document.getElementById("counter").innerText = "Tempo trascorso: " + i + " secondi"
         }, 1000)
         
     }
+    
 }
 
 function pauseCounter(){
@@ -52,13 +53,13 @@ function pauseCounter(){
 
 function resetCounter(){
     pauseCounter()
-    count = 0
-    sessionStorage.setItem("counter", count);
-    document.getElementById("counter").textContent = "Tempo trascorso: " + count + " secondi";
+    i = 0
+    sessionStorage.setItem("count", i);
+    document.getElementById("counter").innerText = "Tempo trascorso: " + i + " secondi";
 
 }
 
 
-document.getElementById("startButton").addEventListener("click", startCounter())
-document.getElementById("pauseButton").addEventListener("click", pauseCounter())
-document.getElementById("resetButton").addEventListener("click", resetCounter())
+document.getElementById("startButton").addEventListener("click", startCounter)
+document.getElementById("pauseButton").addEventListener("click", pauseCounter)
+document.getElementById("resetButton").addEventListener("click", resetCounter)
